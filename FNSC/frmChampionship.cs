@@ -31,9 +31,9 @@ using System.ServiceModel.Channels;
 
 namespace FNSC
 {
-    public partial class Form2 : Form
+    public partial class frmChampionship : Form
     {
-        public static Form2 Instance { get; private set; }
+        public static frmChampionship Instance { get; private set; }
 
 
         int previewTime = 30;
@@ -43,7 +43,7 @@ namespace FNSC
         private ObsClient obs;
         private StreamerbotClient bot;
 
-        public Form2(Game game, ObsClient obsObs, StreamerbotClient bot)
+        public frmChampionship(Game game, ObsClient obsObs, StreamerbotClient bot)
         {
             Webserver.Start();
             InitializeComponent();
@@ -127,7 +127,7 @@ namespace FNSC
             }
         }
 
-        static Form2()
+        static frmChampionship()
         {
             Webserver.Start();
 
@@ -196,7 +196,7 @@ namespace FNSC
             RefreshBoth();
         }
 
-        private static readonly ILog log = LogManager.GetLogger(typeof(Form2));
+        private static readonly ILog log = LogManager.GetLogger(typeof(frmChampionship));
 
         private void btnPlayLeft_Click(object sender, EventArgs e)
         {

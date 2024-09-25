@@ -1,5 +1,5 @@
 ﻿namespace FNSC{
-    partial class Form2
+    partial class frmChampionship
     {
         /// <summary>
         /// Required designer variable.

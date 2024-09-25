@@ -28,9 +28,9 @@ namespace FNSC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if(args.Length > 0 && args.Any(a => a.Contains("debug")))
-                Application.Run(new Form1(true));
+                Application.Run(new frmManagement(true));
             else
-                Application.Run(new Form1());
+                Application.Run(new frmManagement());
         }
     }
 

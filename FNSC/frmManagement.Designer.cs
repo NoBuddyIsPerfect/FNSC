@@ -1,5 +1,5 @@
 ﻿namespace FNSC{
-    partial class Form1
+    partial class frmManagement
     {
         /// <summary>
         /// Required designer variable.

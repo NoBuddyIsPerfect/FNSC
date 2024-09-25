@@ -40,7 +40,7 @@ using log4net;
 
 namespace FNSC
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class frmManagement : DevExpress.XtraEditors.XtraForm
     {
         private static readonly StreamerbotClient streamerbotClient = new();
         private static readonly ObsClient obsClient = new();
@@ -48,7 +48,7 @@ namespace FNSC
         private static readonly object _mutex = new();
         private BindingList<Song> queueList;
         private bool queueOpen = false;
-        private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
+        private static readonly ILog log = LogManager.GetLogger(typeof(frmManagement));
 
         public SubmissionQueue SubmissionQueue
         {
@@ -68,7 +68,7 @@ namespace FNSC
         }
 
         private bool isDebug = false;
-        public Form1(bool enableDebug = false)
+        public frmManagement(bool enableDebug = false)
         {
             InitializeComponent();
             obsClient.Connected += ObsClient_Connected;
@@ -365,7 +365,7 @@ namespace FNSC
             
             obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.RoundHeaderSource);
 
-            Form2 frm = new Form2(game, obsClient, streamerbotClient);
+            frmChampionship frm = new frmChampionship(game, obsClient, streamerbotClient);
             frm.Show();
         }
 

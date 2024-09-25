@@ -1,0 +1,52 @@
+{
+  "collapsedGroups": [],
+  "version": 3,
+  "t": "2024-09-24T18:48:12.4276335+02:00",
+  "rewards": [
+    {
+      "id": "938ef730-fef8-47fb-9c4b-2cb9dd73fa4e",
+      "name": "Spin the wheel",
+      "prompt": "To show the chances of winning use the commands: !winchances",
+      "group": null,
+      "cost": 499,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FFD700"
+    },
+    {
+      "id": "938ef730-fef8-47fb-9c4b-2cb9dd73fa4e",
+      "name": "Spin the wheel",
+      "prompt": "To show the chances of winning use the commands: !winchances",
+      "group": null,
+      "cost": 499,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FFD700"
+    },
+    {
+      "id": "d5af8694-ebb2-4fca-bd94-3c488593b520",
+      "name": "Spin the wheel",
+      "prompt": "To show the chances of winning use the commands: !winchances",
+      "group": null,
+      "cost": 499,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FFD700"
+    },
+    {
+      "id": "d5af8694-ebb2-4fca-bd94-3c488593b520",
+      "name": "Spin the wheel",
+      "prompt": "To show the chances of winning use the commands: !winchances",
+      "group": null,
+      "cost": 499,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FFD700"
+    }
+  ],
+  "autoRewards": []
+}

@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FNSC.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="YtApiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AIzaSyDojuUQ75t-iqa3FxChN2Qsqq_d_EchEkI</Value>
+    </Setting>
+    <Setting Name="StreamerBotIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="StreamerBotPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6969</Value>
+    </Setting>
+    <Setting Name="ObsIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.42.110</Value>
+    </Setting>
+    <Setting Name="ObsPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1402</Value>
+    </Setting>
+    <Setting Name="ObsPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nimda1402</Value>
+    </Setting>
+    <Setting Name="WebserverPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\SB Extensions\FNSC</Value>
+    </Setting>
+    <Setting Name="SendMessageActionID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">537f127a-5066-4166-a32d-b57e15fb5786</Value>
+    </Setting>
+    <Setting Name="SendMessageActionName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SendMessageToChat</Value>
+    </Setting>
+    <Setting Name="MainTextSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Info</Value>
+    </Setting>
+    <Setting Name="RoundHeaderSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Round</Value>
+    </Setting>
+    <Setting Name="CountdownSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Countdown 60</Value>
+    </Setting>
+    <Setting Name="AllVotesSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Votes</Value>
+    </Setting>
+    <Setting Name="ChampionshipScene" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[NS] Song Championship</Value>
+    </Setting>
+    <Setting Name="LeftPlayerSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Left Player</Value>
+    </Setting>
+    <Setting Name="RightPlayerSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Right Player</Value>
+    </Setting>
+    <Setting Name="WinnerSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Winner</Value>
+    </Setting>
+    <Setting Name="VsSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">VS</Value>
+    </Setting>
+    <Setting Name="LeftVotesSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Votes left</Value>
+    </Setting>
+    <Setting Name="RightVotesSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Votes right</Value>
+    </Setting>
+    <Setting Name="SendWhisperActionName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SendWhisper</Value>
+    </Setting>
+    <Setting Name="SendWhisperActionID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8a9381a5-67fd-45e0-afb6-b774311797f2</Value>
+    </Setting>
+    <Setting Name="WinnerTopSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Winner Top</Value>
+    </Setting>
+    <Setting Name="WinnerBottomSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[SC] Winner Bottom</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

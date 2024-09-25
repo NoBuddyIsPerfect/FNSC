@@ -1,0 +1,284 @@
+{
+  "windowSettings": {
+    "hiddenTabs": [],
+    "hiddenSettingsTabs": [],
+    "hiddenPlatformsTabs": [],
+    "hiddenBroadcastersTabs": [],
+    "hiddenIntegrationsTabs": [],
+    "tabOrder": [
+      "tpViewers",
+      "tpActions",
+      "tpActionQueues",
+      "tpCommands",
+      "tpPlatforms",
+      "tpBroadcasters",
+      "tpIntegrations",
+      "tpMidi",
+      "tpSpeechToText",
+      "tpHotKeys",
+      "tpServersClients",
+      "tpSettings",
+      "tpAbout"
+    ],
+    "tabSettingsOrder": [
+      "tpUserInterface",
+      "tpGeneral",
+      "tpSettingsLabs",
+      "tpGroups",
+      "tpFileWatcher",
+      "tpFileTails",
+      "tpTimedActions",
+      "tpCredits",
+      "tpQuotes",
+      "tpCompilerSettings",
+      "tpSettingsVariables"
+    ],
+    "tabPlatformsOrder": [],
+    "tabBroadcastersOrder": [],
+    "tabIntegrationsOrder": [],
+    "actionQueueConfig": {
+      "sort": 4,
+      "sortOrder": 2,
+      "columnWidths": "147,85,60,55,145,145,145"
+    },
+    "actionQueueHistoryConfig": {
+      "sort": 7,
+      "sortOrder": 2,
+      "columnWidths": "147,85,60,60,145,145,145,145"
+    },
+    "favoriteSubActions": [],
+    "favoriteTriggers": [],
+    "defaultCommentColor": "#229977",
+    "subActionDisabledColor": "#DB7093",
+    "customColors": null,
+    "width": 1094,
+    "height": 943,
+    "NoDeleteConfirmation": [],
+    "minimizeToTray": false,
+    "closeConfirmation": true,
+    "executeCodeDialogWidth": 825,
+    "executeCodeDialogHeight": 594,
+    "actionsSplitter": 340,
+    "variableWindowWidth": 0,
+    "variableWindowHeight": 0,
+    "variableNameWidth": 0,
+    "variableValueWidth": 0,
+    "triggerSplitter": 101,
+    "globalWindowLeft": 0,
+    "globalWindowTop": 0,
+    "globalWindowRight": 0,
+    "globalWindowBottom": 0,
+    "globalDeleteNoConfirm": false,
+    "disableActionHistory": false,
+    "disableViewersTab": false,
+    "hideSplashScreen": false
+  },
+  "labs": {},
+  "pyramid": {
+    "enabled": false,
+    "minPyramidWidth": 2
+  },
+  "quotes": {
+    "enabled": false,
+    "allowSubscribers": false,
+    "addPermission": 3
+  },
+  "subCounter": {
+    "enabled": false,
+    "rolloverEnabled": false,
+    "outputFile": "C:\\Users\\Denis\\source\\repos\\NBSongChampionships\\Streamer.Bot\\data\\subcounter.txt",
+    "outputText": "%subCounter% of %rollover% (%rolloverCount%)"
+  },
+  "hotKeySettings": {
+    "collapsedGroups": [],
+    "hotKeys": []
+  },
+  "eventSettings": {
+    "giftSubIgnoreFromGiftBomb": true,
+    "presentViewersEnabled": true,
+    "presentViewersLiveUpdate": false,
+    "presentViewersInterval": 5
+  },
+  "timedActions": {
+    "timers": []
+  },
+  "fileWatcherSettings": {
+    "watchers": []
+  },
+  "fileTails": {
+    "fileTails": []
+  },
+  "processWatcher": {
+    "autoStart": false
+  },
+  "speechToText": {
+    "commands": [],
+    "autoStart": false,
+    "audioDevice": null,
+    "confidenceThreshold": 0.0,
+    "locale": "en-US",
+    "logSpokenText": false
+  },
+  "websockets": {
+    "autoStart": true,
+    "address": "127.0.0.1",
+    "port": 6969,
+    "endpoint": "/",
+    "connections": [],
+    "servers": []
+  },
+  "udp": {
+    "autoStart": false,
+    "port": 4242
+  },
+  "http": {
+    "autoStart": false,
+    "address": "127.0.0.1",
+    "port": 7474
+  },
+  "credits": {
+    "creditEvents": [],
+    "rolesPresent": [],
+    "groupPresent": [],
+    "topEvents": [],
+    "autoReset": 12
+  },
+  "youTube": {
+    "presentViewersInterval": 5,
+    "firstWordsAutoReset": 12,
+    "botAutoConnect": false,
+    "autoMonitor": true,
+    "acceptedTerms": false,
+    "tags": [
+      "Horizontal",
+      "Vertical"
+    ],
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "trovo": {
+    "presentViewersEnabled": true,
+    "presentViewersLiveUpdate": false,
+    "presentViewersInterval": 5,
+    "firstWordsAutoReset": 12,
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "streamlabs": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "donorDrives": {
+    "settings": []
+  },
+  "pulsoid": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "hypeRate": {
+    "hypeRateId": null,
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "tipeeeStream": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "treatStream": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "lumiaStream": {
+    "socketToken": null,
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "crowdcontrol": {
+    "autoConnect": false,
+    "autoReconnect": false
+  },
+  "website": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "compilerSettings": {
+    "commonReferences": [],
+    "autoCompleteClosing": true
+  },
+  "pallygg": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "version": 31,
+  "instanceId": "ac11f2dc-db31-454e-8096-ec02b7391f55",
+  "instanceName": "Streamer.bot - New FNSC Version",
+  "logLevel": 1,
+  "useInvariantCulture": false,
+  "streamUpdateOnConnect": false,
+  "updateChannel": "stable",
+  "lastVersion": "0.2.4",
+  "disabledSubActions": [],
+  "disabledTriggers": [],
+  "slobsSettings": {
+    "connections": []
+  },
+  "polyPopServerSettings": {
+    "autoStart": false,
+    "address": "127.0.0.1",
+    "port": 9652,
+    "endpoint": "/"
+  },
+  "voiceModSettings": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "retryInterval": 0
+  },
+  "streamDeckSettings": {
+    "autoStart": true,
+    "address": "127.0.0.1",
+    "port": 5555
+  },
+  "vTubeStudioSettings": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "address": "localhost",
+    "port": 8001
+  },
+  "throwingSystemSettings": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "address": "localhost",
+    "port": 42069
+  },
+  "elgatoSettings": {
+    "waveLinkAutoConnect": false,
+    "waveLinkAutoReconnect": false,
+    "cameraHubAutoConnect": false,
+    "cameraHubAutoReconnect": false
+  },
+  "speakerbot": {
+    "autoConnect": false,
+    "autoReconnect": false,
+    "address": "127.0.0.1",
+    "port": 7580
+  },
+  "defaultAudioDevice": null,
+  "volume": 1.0,
+  "audioUseSystemDefault": true,
+  "firstWordsAutoReset": 12,
+  "maskVariables": false,
+  "maskedVariables": [
+    "apiKey",
+    "url"
+  ]
+}

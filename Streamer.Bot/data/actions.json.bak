@@ -1,0 +1,139 @@
+{
+  "collapsedGroups": [],
+  "version": 12,
+  "t": "2024-09-24T18:48:12.4276335+02:00",
+  "blocking": false,
+  "queues": [],
+  "actions": [
+    {
+      "id": "537f127a-5066-4166-a32d-b57e15fb5786",
+      "queue": null,
+      "enabled": true,
+      "excludeFromHistory": false,
+      "name": "SendMessageToChat",
+      "group": "",
+      "alwaysRun": false,
+      "randomAction": false,
+      "concurrent": false,
+      "triggers": [],
+      "actions": [
+        {
+          "text": "%MessagePart%",
+          "preferredAccount": 0,
+          "id": "00193ebe-e9fa-4c71-9cfa-cc8c9877d58f",
+          "weight": 0.0,
+          "type": 10,
+          "group": null,
+          "enabled": true,
+          "index": 0
+        }
+      ],
+      "actionGroups": [],
+      "collapsedGroups": []
+    },
+    {
+      "id": "8a9381a5-67fd-45e0-afb6-b774311797f2",
+      "queue": null,
+      "enabled": true,
+      "excludeFromHistory": false,
+      "name": "SendWhisper",
+      "group": "",
+      "alwaysRun": false,
+      "randomAction": false,
+      "concurrent": false,
+      "triggers": [],
+      "actions": [
+        {
+          "name": "",
+          "description": "",
+          "references": [
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\mscorlib.dll"
+          ],
+          "byteCode": "dXNpbmcgU3lzdGVtOw0KDQpwdWJsaWMgY2xhc3MgQ1BISW5saW5lDQp7DQoJcHVibGljIGJvb2wgRXhlY3V0ZSgpDQoJew0KDQoJCUNQSC5TZW5kV2hpc3BlcihhcmdzWyJ1c2VybmFtZSJdLlRvU3RyaW5nKCksIGFyZ3NbIk1lc3NhZ2VQYXJ0Il0uVG9TdHJpbmcoKSwgdHJ1ZSk7DQoJCXJldHVybiB0cnVlOw0KCX0NCn0NCg==",
+          "precompile": false,
+          "delayStart": false,
+          "saveResultToVariable": false,
+          "saveToVariable": "",
+          "id": "251d2f2e-71e4-4c55-9f4c-1886ab6103f1",
+          "weight": 0.0,
+          "type": 99999,
+          "group": null,
+          "enabled": true,
+          "index": 0
+        }
+      ],
+      "actionGroups": [],
+      "collapsedGroups": []
+    },
+    {
+      "id": "cc807cf9-980c-4332-a5e4-9ad48349d4b2",
+      "queue": null,
+      "enabled": true,
+      "excludeFromHistory": false,
+      "name": "Next Battle",
+      "group": "",
+      "alwaysRun": false,
+      "randomAction": false,
+      "concurrent": false,
+      "triggers": [
+        {
+          "variables": {},
+          "id": "047048e6-0c58-4646-a9c7-ef4387f6eb44",
+          "type": 702,
+          "enabled": true,
+          "exclusions": []
+        }
+      ],
+      "actions": [
+        {
+          "value": "1",
+          "maxValue": "0",
+          "random": false,
+          "id": "5d43c0a1-920c-4344-89d0-3bbaec654e03",
+          "weight": 0.0,
+          "type": 1002,
+          "group": null,
+          "enabled": true,
+          "index": 0
+        }
+      ],
+      "actionGroups": [],
+      "collapsedGroups": []
+    },
+    {
+      "id": "19878ab9-5791-4f03-b3df-eb2b22ae6e18",
+      "queue": null,
+      "enabled": true,
+      "excludeFromHistory": false,
+      "name": "test",
+      "group": "",
+      "alwaysRun": false,
+      "randomAction": false,
+      "concurrent": false,
+      "triggers": [
+        {
+          "commandId": "9ad89fc3-e9ca-4e58-93c7-4622e79006f9",
+          "id": "66810ddb-a0d0-456e-8094-bbc5ae407d2e",
+          "type": 401,
+          "enabled": true,
+          "exclusions": []
+        }
+      ],
+      "actions": [
+        {
+          "text": "sdfsdf",
+          "preferredAccount": 0,
+          "replyId": "%msgId%",
+          "id": "2b196568-a909-44cf-9393-c7f676d1ca86",
+          "weight": 0.0,
+          "type": 560,
+          "group": null,
+          "enabled": true,
+          "index": 0
+        }
+      ],
+      "actionGroups": [],
+      "collapsedGroups": []
+    }
+  ]
+}

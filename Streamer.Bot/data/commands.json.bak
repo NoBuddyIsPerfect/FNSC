@@ -1,0 +1,81 @@
+{
+  "collapsedGroups": [],
+  "version": 5,
+  "t": "2024-09-24T18:48:12.4276335+02:00",
+  "commands": [
+    {
+      "sources": [
+        0
+      ],
+      "permittedUsers": [],
+      "permittedGroups": [],
+      "id": "9ad89fc3-e9ca-4e58-93c7-4622e79006f9",
+      "name": "test",
+      "enabled": true,
+      "include": true,
+      "mode": 0,
+      "command": "!test",
+      "regexExplicitCapture": false,
+      "location": 0,
+      "ignoreBotAccount": true,
+      "ignoreInternal": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "caseSensitive": false,
+      "globalCooldown": 0,
+      "userCooldown": 0,
+      "group": "",
+      "grantType": 0
+    },
+    {
+      "sources": [
+        0,
+        2,
+        3
+      ],
+      "permittedUsers": [],
+      "permittedGroups": [],
+      "id": "03599e59-dd71-4fc8-8eaf-4df1a7310e9c",
+      "name": "1",
+      "enabled": true,
+      "include": true,
+      "mode": 0,
+      "command": "1\r\n2",
+      "regexExplicitCapture": false,
+      "location": 0,
+      "ignoreBotAccount": false,
+      "ignoreInternal": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "caseSensitive": false,
+      "globalCooldown": 0,
+      "userCooldown": 0,
+      "group": "",
+      "grantType": 0
+    },
+    {
+      "sources": [
+        3
+      ],
+      "permittedUsers": [],
+      "permittedGroups": [],
+      "id": "7eddff89-6bf7-4719-915a-5d01a45f72bf",
+      "name": "youtube.com",
+      "enabled": true,
+      "include": true,
+      "mode": 0,
+      "command": "youtube.com\r\nyoutu.be",
+      "regexExplicitCapture": false,
+      "location": 2,
+      "ignoreBotAccount": true,
+      "ignoreInternal": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "caseSensitive": false,
+      "globalCooldown": 0,
+      "userCooldown": 0,
+      "group": "",
+      "grantType": 0
+    }
+  ]
+}

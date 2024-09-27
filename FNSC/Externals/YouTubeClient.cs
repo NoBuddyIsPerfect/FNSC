@@ -37,7 +37,7 @@ namespace FNSC.Externals
                 {
                     code = param.Get("v") ?? "";
 
-                    startTime = param.Get("t") ?? "";
+                    startTime = param.Get("t")?.TrimEnd('s') ?? "";
 
                 }
 

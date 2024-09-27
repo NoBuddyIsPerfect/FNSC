@@ -58,6 +58,7 @@ namespace FNSC.Data
         public int ChampionshipNumber { get; set; } = 1;
         public string Theme { get; set; } = "No theme";
         public ICollection<Song> SubmittedSongs { get; set; } = new BindingList<Song>();
+        
         public ICollection<Song> PreSubmittedSongs { get; set; } = new List<Song>();
         public bool SubmissionsOpen { get; set;  } = false;
         public bool GameFinished { get; set;  } = false;

@@ -107,8 +107,8 @@ namespace FNSC
             obs.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.LeftPlayerSource);
             obs.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.VsSource);
             obs.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.RoundHeaderSource);
-            //obs.SetText(Properties.Settings.Default.WinnerTopSource, $"{game.CurrentRound.CurrentBattle.Winner.Channel} -\n{(game.CurrentRound.CurrentBattle.Winner.Description.Length < 30 ? game.CurrentRound.CurrentBattle.Winner.Description : game.CurrentRound.CurrentBattle.Winner.Description.Substring(0, 30))}");
-            //obs.SetText(Properties.Settings.Default.WinnerBottomSource, $"by {game.CurrentRound.CurrentBattle.Winner.Viewer.display}");
+            obs.SetText(Properties.Settings.Default.WinnerTopSource, $"{game.CurrentRound.CurrentBattle.Winner.Channel} -\n{(game.CurrentRound.CurrentBattle.Winner.Description.Length < 30 ? game.CurrentRound.CurrentBattle.Winner.Description : game.CurrentRound.CurrentBattle.Winner.Description.Substring(0, 30))}");
+            obs.SetText(Properties.Settings.Default.WinnerBottomSource, $"by {game.CurrentRound.CurrentBattle.Winner.Viewer.display}");
             obs.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerTopSource);
             obs.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerSource);
 
@@ -188,10 +188,16 @@ namespace FNSC
 
         private void btnDevtools_Click(object sender, EventArgs e)
         {
-            game.PreparePlayers();
-
-
- //           browserLeft.ShowDevTools();
+            // game.PreparePlayers();
+            //Song song = YouTubeClient.GetYTVideoDetails("https://www.youtube.com/watch?v=MFL2bS0jgHM",
+            //    Properties.Settings.Default.YtApiKey);
+            //Viewer viewer = ChampionshipContext.ContextInstance.Viewers.First(v => v.display == "Vavtrudnir");
+            //song.Viewer = viewer;
+            //game.SubmittedSongs.Add(song);
+            Battle b = game.CurrentRound.Battles.FirstOrDefault(b => b.Position == 8);
+            Song s = ChampionshipContext.ContextInstance.Songs.First(s => s.Code == "MFL2bS0jgHM");
+            b.Song2 = s;
+            //           browserLeft.ShowDevTools();
         }
 
         public void RefreshBoth()
@@ -229,7 +235,6 @@ namespace FNSC
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            LogToTextbox($"{watch.Elapsed}: Starting Preview");
             timer = new Timer();
             timer.Interval = Convert.ToInt32(numTotalPreviewTime.Value / 4) * 1000; // 30 seconds
             timer.Tick += OnTimedEvent;
@@ -241,12 +246,13 @@ namespace FNSC
             watch.Start();
             btnCancelPreview.Enabled = true;
             btnPreview.Enabled = btnVoting.Enabled = false;
+            LogToTextbox($"{watch.Elapsed}: Starting Preview");
+
         }
 
         private void btnVoting_Click(object sender, EventArgs e)
         {
-            LogToTextbox($"{watch.Elapsed}: Starting Voting");
-            timer = new Timer();
+             timer = new Timer();
             timer.Interval = Convert.ToInt32(numTotalVotingTime.Value / 4) * 1000; // 30 seconds
             timer.Tick += OnTimedEvent;
             isPlayer1Active = true;
@@ -259,6 +265,9 @@ namespace FNSC
             btnVoting.Enabled = btnPreview.Enabled = false;
             game.IsVotingOpen = true;
             obs.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.CountdownSource);
+            LogToTextbox($"{watch.Elapsed}: Starting Voting");
+            bot.SendMessage("Voting is open!");
+
         }
 
         private void btnCancelVote_Click(object sender, EventArgs e)
@@ -358,6 +367,7 @@ namespace FNSC
                     game.CloseVoting();
 
                 }
+                bot.SendMessage("Voting closed!");
             }
             timer.Stop();
             btnCancelPreview.Enabled = false;
@@ -367,7 +377,8 @@ namespace FNSC
             timer = null;
             isPlayer1Active = false;
             LogToTextbox($"{watch.Elapsed}: CloseVoting() End: Timer nulled");
-
+            watch.Stop();
+            watch = null;
 
         }
 
@@ -452,6 +463,7 @@ namespace FNSC
 
         private void btnNextRound_Click(object sender, EventArgs e)
         {
+            game.IsVotingOpen = false;
             game.NextBattle();
             RefreshBoth();
             gridControl1.DataSource = game.SubmittedSongs;
@@ -499,7 +511,7 @@ namespace FNSC
                         e.Appearance.BackColor = Color.Red;
                     else if (song.won)
                         e.Appearance.BackColor = Color.Green;
-                    else if (song.Id == game.CurrentRound.CurrentBattle.Song2.Id || song.Id == game.CurrentRound.CurrentBattle.Song1.Id)
+                    else if (song.Id == game.CurrentRound?.CurrentBattle?.Song2?.Id || song.Id == game.CurrentRound?.CurrentBattle?.Song1?.Id)
                         e.Appearance.BackColor = Color.Yellow;
                     else
                         e.Appearance.BackColor = Color.White;

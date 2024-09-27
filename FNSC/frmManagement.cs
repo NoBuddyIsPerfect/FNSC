@@ -74,12 +74,22 @@ namespace FNSC
             obsClient.Connected += ObsClient_Connected;
             streamerbotClient.CommandReceived += StreamerbotClient_CommandReceived;
             streamerbotClient.ChatMessageReceived += StreamerbotClient_ChatMessageReceived;
+            streamerbotClient.ActionExecuted += StreamerbotClient_ActionExecuted;
             isDebug = enableDebug;
             ToggleDebugFeatures();
             RefreshUserComboBox();
          
 
          
+        }
+
+        private void StreamerbotClient_ActionExecuted(object sender, ActionExecutedEventArgs e)
+        {
+            string t = e.Action.@event.type;
+            if (e.Action.data.actionId == "cc807cf9-980c-4332-a5e4-9ad48349d4b2")
+            {
+
+            }
         }
 
         void gridView1_CustomUnboundColumnData(object sender,
@@ -404,7 +414,7 @@ namespace FNSC
             obsClient.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.CountdownSource);
             obsClient.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerBottomSource);
             obsClient.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerTopSource);
-
+            streamerbotClient.SendMessage("Submissions are open!");
 
         }
 
@@ -523,7 +533,7 @@ namespace FNSC
 
 
 
-            //    ChampionshipContext.ContextInstance.Games.Update(game);
+            //ChampionshipContext.ContextInstance.Games.Update(game);
             //ChampionshipContext.ContextInstance.SaveChanges();
             //RefreshGameComboBox(game);
         }
@@ -704,7 +714,7 @@ namespace FNSC
         {
             if (game == null)
                 return;
-            string[] parts = txtMaxLength.Text.Split(':');
+            string[] parts = txtMinLength.Text.Split(':');
             if (parts.Length == 2)
             {
                 int min = int.Parse(parts[0]);

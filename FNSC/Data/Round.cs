@@ -29,6 +29,7 @@ namespace FNSC.Data
         public Battle CurrentBattle { get; set; } 
         
         public List<Battle> Battles;
+        
         public List<Battle> FinishedBattles { get; set; } = new List<Battle>();
 
     }

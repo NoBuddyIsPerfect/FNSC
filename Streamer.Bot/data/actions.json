@@ -1,7 +1,7 @@
 {
   "collapsedGroups": [],
   "version": 12,
-  "t": "2024-09-27T15:43:07.0810562+02:00",
+  "t": "2024-09-27T16:56:59.4976477+02:00",
   "blocking": false,
   "queues": [],
   "actions": [
@@ -92,41 +92,6 @@
           "id": "5d43c0a1-920c-4344-89d0-3bbaec654e03",
           "weight": 0.0,
           "type": 1002,
-          "group": null,
-          "enabled": true,
-          "index": 0
-        }
-      ],
-      "actionGroups": [],
-      "collapsedGroups": []
-    },
-    {
-      "id": "19878ab9-5791-4f03-b3df-eb2b22ae6e18",
-      "queue": null,
-      "enabled": true,
-      "excludeFromHistory": false,
-      "name": "test",
-      "group": "",
-      "alwaysRun": false,
-      "randomAction": false,
-      "concurrent": false,
-      "triggers": [
-        {
-          "commandId": "9ad89fc3-e9ca-4e58-93c7-4622e79006f9",
-          "id": "66810ddb-a0d0-456e-8094-bbc5ae407d2e",
-          "type": 401,
-          "enabled": true,
-          "exclusions": []
-        }
-      ],
-      "actions": [
-        {
-          "text": "sdfsdf",
-          "preferredAccount": 0,
-          "replyId": "%msgId%",
-          "id": "2b196568-a909-44cf-9393-c7f676d1ca86",
-          "weight": 0.0,
-          "type": 560,
           "group": null,
           "enabled": true,
           "index": 0

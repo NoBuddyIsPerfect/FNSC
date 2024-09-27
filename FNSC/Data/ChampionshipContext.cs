@@ -46,7 +46,8 @@ namespace FNSC.Data
         // The following configures EF to create a Sqlite database file in the
         // special "local" folder for your platform.
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"DataSource="+DbPath);
+            => options.UseSqlite($"DataSource="+DbPath).EnableSensitiveDataLogging();
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,12 +87,8 @@ namespace FNSC.Data
             modelBuilder.Entity<Viewer>().HasData(new Viewer { id = "734501812", display = "nobotisperfect", name = "nobotisperfect", role = 3, type = "twitch", subscribed = false });
 
 
+
           
-
-
-
-
-
 
 
 

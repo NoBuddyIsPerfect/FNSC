@@ -17,8 +17,7 @@
       "tpSpeechToText",
       "tpHotKeys",
       "tpServersClients",
-      "tpSettings",
-      "tpAbout"
+      "tpSettings"
     ],
     "tabSettingsOrder": [
       "tpUserInterface",

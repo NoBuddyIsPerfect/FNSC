@@ -77,7 +77,16 @@ namespace FNSC
             isDebug = enableDebug;
             ToggleDebugFeatures();
             RefreshUserComboBox();
+         
 
+         
+        }
+
+        void gridView1_CustomUnboundColumnData(object sender,
+            DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            if (e.IsGetData)
+                e.Value = e.ListSourceRowIndex + 1;
         }
 
         private void ToggleDebugFeatures()
@@ -168,47 +177,50 @@ namespace FNSC
                     streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, I could not retrieve your Song from YT!");
                     return false;
                 }
-                if (SubmissionQueue.Count(s => s.Viewer.id == submitttedSong.Viewer.id) >= game?.NoOfSongsPerPerson && game.SendWhispers)
+                if (SubmissionQueue.Count(s => s.Viewer.id == submitttedSong.Viewer.id) >= game?.NoOfSongsPerPerson)
                 {
-                    streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
+                    if(game.SendWhispers)
+                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
                         "Sorry, " + submitttedSong.Viewer.display +
                         ", you have already submitted the allowed number of songs!");
                     return false;
                 }
-                if (SubmissionQueue.Count(s => s.Code == submitttedSong.Code) > 0 && !game.AllowDoubles && game.SendWhispers)
+                if (SubmissionQueue.Count(s => s.Code == submitttedSong.Code) > 0 && !game.AllowDoubles)
                 {
-                    streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
+                    if (game.SendWhispers)
+                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
                         "Sorry, " + submitttedSong.Viewer.display + ", that Song has already been submitted!");
                     return false;
                 }
 
-                if (!queueOpen && game.SendWhispers)
+                if (!queueOpen)
                 {
-                    streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, Your Song could not be added because submissions are closed!");
+                    if (game.SendWhispers)
+                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, Your Song could not be added because submissions are closed!");
 
                     return false;
 
                 }
-                if (submitttedSong.IsBlocked && game.SendWhispers)
+                if (submitttedSong.IsBlocked)
                 {
-
-                    streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, that video is either age restricted or blocked in Germany! Please submit a different video!");
+                    if (game.SendWhispers)
+                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, that video is either age restricted or blocked in Germany! Please submit a different video!");
                     return false;
                 }
                 if (submitttedSong.Length < new TimeSpan(0, 2, 30))
                 {
                     streamerbotClient.SendMessage("Sorry, @" + submitttedSong.Viewer.display + ", that Song is too short. Please make sure your Song is at least 2:30 min long.");
-                    return true;
+                    return false;
                 }
                 if (submitttedSong.Length.Subtract(new TimeSpan(0, 0, submitttedSong.InitialStarttime)) < game.MinSongLength)
                 {
                     streamerbotClient.SendMessage("Sorry, @" + submitttedSong.Viewer.display + ", that Song is too short. Please make sure your Song has at least 2:30 min of playtime after the start time!");
-                    return true;
+                    return false;
                 }
-                if (game.MaxSongLength.TotalMilliseconds > 0 && game.MaxSongLength < submitttedSong.Length && game.SendWhispers)
+                if (game.MaxSongLength.TotalMilliseconds > 0 && game.MaxSongLength < submitttedSong.Length)
                 {
 
-                    streamerbotClient.SendWhisper(submitttedSong.Viewer.display, "Sorry, Your Song could not be added because it is too long!");
+                    streamerbotClient.SendMessage("Sorry, @"+submitttedSong.Viewer.display+", your Song could not be added because it is too long!");
                     return false;
                 }
                 {
@@ -216,6 +228,9 @@ namespace FNSC
                     SubmissionQueue.Enqueue(submitttedSong);
                     game.PreSubmittedSongs.Add(submitttedSong);
                     ChampionshipContext.ContextInstance.SaveChanges();
+                    if (game.SendWhispers)
+                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
+                            $"Your Song {submitttedSong.Description} has been submitted!");
                     if (SubmissionQueue.Count == game.NoOfSongs)
                     {
                         CloseSubmissions();
@@ -229,10 +244,7 @@ namespace FNSC
                         obsClient.SetText(Properties.Settings.Default.MainTextSource, text);
                         // streamerbotClient.SendMessage("Sorry, " + submitttedSong.Viewer.display + ", you have already submitted the allowed number of songs!");
                     }
-                    if (game.SendWhispers)
-                        streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
-                        $"You Song {submitttedSong.Description} has been submitted!");
-
+                   
                     return true;
                 }
             }

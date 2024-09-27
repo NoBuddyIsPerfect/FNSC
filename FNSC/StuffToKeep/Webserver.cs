@@ -40,7 +40,7 @@ namespace FNSC.tuffToKeep
                 o.WithMode(HttpListenerMode.EmbedIO);
                 
             })
-                .WithStaticFolder("/", "E:\\SB Extensions\\FNSC", false);
+                .WithStaticFolder("/", Properties.Settings.Default.WebserverPath, false);
             //.WithStaticFolder("/", "E:\\SB Extensions\\SongChampionship", false, o => { o.DefaultExtension = "html"; });
             server.HandleHttpException(async (context, exception) =>
             {

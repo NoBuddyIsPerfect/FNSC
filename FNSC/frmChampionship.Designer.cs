@@ -62,6 +62,7 @@
             colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             colStarttime = new DevExpress.XtraGrid.Columns.GridColumn();
             txtLogOutput = new System.Windows.Forms.TextBox();
+            colNo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -79,7 +80,7 @@
             colOut.FieldName = "IsOut";
             colOut.Name = "colOut";
             colOut.Visible = true;
-            colOut.VisibleIndex = 7;
+            colOut.VisibleIndex = 8;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -312,7 +313,7 @@
             // gridView1
             // 
             gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colDescription, colChannel, colLength, colIsBlocked, colUrl, colViewer, colCode, colStarttime, colOut });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colNo, colDescription, colChannel, colLength, colIsBlocked, colUrl, colViewer, colCode, colStarttime, colOut });
             gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Column = colOut;
@@ -335,6 +336,7 @@
             gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.CustomDrawCell += gridView1_CustomDrawCell;
             gridView1.RowStyle += gridView1_RowStyle;
+            gridView1.CustomUnboundColumnData += gridView1_CustomUnboundColumnData;
             gridView1.DoubleClick += gridView1_DoubleClick;
             // 
             // colId
@@ -347,42 +349,42 @@
             colDescription.FieldName = "Description";
             colDescription.Name = "colDescription";
             colDescription.Visible = true;
-            colDescription.VisibleIndex = 0;
+            colDescription.VisibleIndex = 1;
             // 
             // colChannel
             // 
             colChannel.FieldName = "Channel";
             colChannel.Name = "colChannel";
             colChannel.Visible = true;
-            colChannel.VisibleIndex = 1;
+            colChannel.VisibleIndex = 2;
             // 
             // colLength
             // 
             colLength.FieldName = "Length";
             colLength.Name = "colLength";
             colLength.Visible = true;
-            colLength.VisibleIndex = 2;
+            colLength.VisibleIndex = 3;
             // 
             // colIsBlocked
             // 
             colIsBlocked.FieldName = "IsBlocked";
             colIsBlocked.Name = "colIsBlocked";
             colIsBlocked.Visible = true;
-            colIsBlocked.VisibleIndex = 3;
+            colIsBlocked.VisibleIndex = 4;
             // 
             // colUrl
             // 
             colUrl.FieldName = "Url";
             colUrl.Name = "colUrl";
             colUrl.Visible = true;
-            colUrl.VisibleIndex = 4;
+            colUrl.VisibleIndex = 5;
             // 
             // colViewer
             // 
             colViewer.FieldName = "Viewer";
             colViewer.Name = "colViewer";
             colViewer.Visible = true;
-            colViewer.VisibleIndex = 5;
+            colViewer.VisibleIndex = 6;
             // 
             // colCode
             // 
@@ -395,7 +397,7 @@
             colStarttime.FieldName = "InitialStarttime";
             colStarttime.Name = "colStarttime";
             colStarttime.Visible = true;
-            colStarttime.VisibleIndex = 6;
+            colStarttime.VisibleIndex = 7;
             // 
             // txtLogOutput
             // 
@@ -405,7 +407,16 @@
             txtLogOutput.Size = new System.Drawing.Size(338, 280);
             txtLogOutput.TabIndex = 19;
             // 
-            // Form2
+            // colNo
+            // 
+            colNo.Caption = "No";
+            colNo.FieldName = "gridColumn1";
+            colNo.Name = "colNo";
+            colNo.UnboundDataType = typeof(int);
+            colNo.Visible = true;
+            colNo.VisibleIndex = 0;
+            // 
+            // frmChampionship
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -429,7 +440,7 @@
             Controls.Add(btnReload);
             Controls.Add(btnDevtools);
             Controls.Add(btnPlayRight);
-            Name = "Form2";
+            Name = "frmChampionship";
             Text = "Form2";
             FormClosing += Form2_FormClosing;
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEdit1).EndInit();
@@ -480,5 +491,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colOut;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.TextBox txtLogOutput;
+        private DevExpress.XtraGrid.Columns.GridColumn colNo;
     }
 }

@@ -33,6 +33,7 @@
             songBindingSource = new System.Windows.Forms.BindingSource(components);
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            colNo = new DevExpress.XtraGrid.Columns.GridColumn();
             colViewer = new DevExpress.XtraGrid.Columns.GridColumn();
             colChannel = new DevExpress.XtraGrid.Columns.GridColumn();
             colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -122,7 +123,7 @@
             // 
             // gridView1
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colViewer, colChannel, colDescription, colLength, colUrl, colCode, colStarttime, colIsBlocked });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colNo, colViewer, colChannel, colDescription, colLength, colUrl, colCode, colStarttime, colIsBlocked });
             gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
@@ -135,6 +136,7 @@
             gridView1.OptionsMenu.EnableColumnMenu = false;
             gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.PopupMenuShowing += gridView1_PopupMenuShowing;
+            gridView1.CustomUnboundColumnData += gridView1_CustomUnboundColumnData;
             gridView1.KeyDown += gridView1_KeyDown;
             gridView1.DoubleClick += gridView1_DoubleClick;
             // 
@@ -142,41 +144,51 @@
             // 
             colId.FieldName = "Id";
             colId.Name = "colId";
+            colId.UnboundDataType = typeof(int);
+            // 
+            // colNo
+            // 
+            colNo.Caption = "No";
+            colNo.FieldName = "colNo";
+            colNo.Name = "colNo";
+            colNo.UnboundDataType = typeof(int);
+            colNo.Visible = true;
+            colNo.VisibleIndex = 0;
             // 
             // colViewer
             // 
             colViewer.FieldName = "Viewer";
             colViewer.Name = "colViewer";
             colViewer.Visible = true;
-            colViewer.VisibleIndex = 0;
+            colViewer.VisibleIndex = 1;
             // 
             // colChannel
             // 
             colChannel.FieldName = "Channel";
             colChannel.Name = "colChannel";
             colChannel.Visible = true;
-            colChannel.VisibleIndex = 1;
+            colChannel.VisibleIndex = 2;
             // 
             // colDescription
             // 
             colDescription.FieldName = "Description";
             colDescription.Name = "colDescription";
             colDescription.Visible = true;
-            colDescription.VisibleIndex = 2;
+            colDescription.VisibleIndex = 3;
             // 
             // colLength
             // 
             colLength.FieldName = "Length";
             colLength.Name = "colLength";
             colLength.Visible = true;
-            colLength.VisibleIndex = 3;
+            colLength.VisibleIndex = 4;
             // 
             // colUrl
             // 
             colUrl.FieldName = "Url";
             colUrl.Name = "colUrl";
             colUrl.Visible = true;
-            colUrl.VisibleIndex = 4;
+            colUrl.VisibleIndex = 5;
             // 
             // colCode
             // 
@@ -184,21 +196,21 @@
             colCode.Name = "colCode";
             colCode.OptionsColumn.ReadOnly = true;
             colCode.Visible = true;
-            colCode.VisibleIndex = 5;
+            colCode.VisibleIndex = 6;
             // 
             // colStarttime
             // 
             colStarttime.FieldName = "InitialStarttime";
             colStarttime.Name = "colStarttime";
             colStarttime.Visible = true;
-            colStarttime.VisibleIndex = 6;
+            colStarttime.VisibleIndex = 7;
             // 
             // colIsBlocked
             // 
             colIsBlocked.FieldName = "IsBlocked";
             colIsBlocked.Name = "colIsBlocked";
             colIsBlocked.Visible = true;
-            colIsBlocked.VisibleIndex = 7;
+            colIsBlocked.VisibleIndex = 8;
             // 
             // btnOpenSubmissions
             // 
@@ -549,7 +561,7 @@
             chkWhispers.Text = "Send whispers";
             chkWhispers.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // frmManagement
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -587,7 +599,7 @@
             Controls.Add(gridControl1);
             Controls.Add(btnStartChampionship);
             Controls.Add(label2);
-            Name = "Form1";
+            Name = "frmManagement";
             Text = "Form1";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
@@ -662,6 +674,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnModifyChampionship;
         private System.Windows.Forms.CheckBox chkWhispers;
+        private DevExpress.XtraGrid.Columns.GridColumn colNo;
     }
 }
 

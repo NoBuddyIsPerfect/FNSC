@@ -67,8 +67,16 @@ namespace FNSC
             game.WinnerFound += GameOnWinnerFound;
             game.StartNextBattle += GameOnStartNextBattle;
             Instance = this;
+          
+         
         }
 
+        void gridView1_CustomUnboundColumnData(object sender,
+            DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            if (e.IsGetData)
+                e.Value = e.ListSourceRowIndex + 1;
+        }
 
         private void GameOnStartNextBattle(object sender, EventArgs e)
         {
@@ -107,13 +115,13 @@ namespace FNSC
             obs.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerBottomSource);
 
         }
-        //public void LogToTextbox(string message)
-        //{
-        //    if (txtLogOutput.InvokeRequired)
-        //        txtLogOutput.Invoke(new AppendLogTextboxDelegate(WriteTextToLogControl), message);
-        //    else
-        //        txtLogOutput.AppendText(Environment.NewLine + message);
-        //}
+        public void LogToTextbox(string message)
+        {
+            if (txtLogOutput.InvokeRequired)
+                txtLogOutput.Invoke(new AppendLogTextboxDelegate(WriteTextToLogControl), message);
+            else
+                txtLogOutput.AppendText(Environment.NewLine + message);
+        }
         public void WriteTextToLogControl(string message)
         {
             txtLogOutput.AppendText(Environment.NewLine + message);
@@ -163,6 +171,7 @@ namespace FNSC
             MousePoint p = new MousePoint(1441, 280);
             //MousePoint p = new MousePoint(rightPlayerCenterX, rightPlayerCenterY);
             PerformMouseClick(p);
+            LogToTextbox("Right Click");
         }
 
         private void PerformMouseClick(MousePoint p)
@@ -209,6 +218,7 @@ namespace FNSC
             MousePoint p = new MousePoint(482, 280);
             //MousePoint p = new MousePoint(leftPlayerCenterX, leftPlayerCenterY);
             PerformMouseClick(p);
+            LogToTextbox("Left Click");
         }
 
         private Timer timer;
@@ -216,30 +226,35 @@ namespace FNSC
         private bool isPlayer1Active;
 
 
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            LogToTextbox($"{watch.Elapsed}: Starting Preview");
             timer = new Timer();
             timer.Interval = Convert.ToInt32(numTotalPreviewTime.Value / 4) * 1000; // 30 seconds
             timer.Tick += OnTimedEvent;
-            playCount = 0;
             isPlayer1Active = true;
             playCount = 1;
             ClickLeft();
             timer.Start();
+            watch = new();
+            watch.Start();
             btnCancelPreview.Enabled = true;
             btnPreview.Enabled = btnVoting.Enabled = false;
         }
 
         private void btnVoting_Click(object sender, EventArgs e)
         {
+            LogToTextbox($"{watch.Elapsed}: Starting Voting");
             timer = new Timer();
             timer.Interval = Convert.ToInt32(numTotalVotingTime.Value / 4) * 1000; // 30 seconds
             timer.Tick += OnTimedEvent;
-            playCount = 0;
             isPlayer1Active = true;
             playCount = 1;
             ClickLeft();
             timer.Start();
+            watch = new();
+            watch.Start();
             btnCancelVote.Enabled = true;
             btnVoting.Enabled = btnPreview.Enabled = false;
             game.IsVotingOpen = true;
@@ -248,18 +263,16 @@ namespace FNSC
 
         private void btnCancelVote_Click(object sender, EventArgs e)
         {
-            btnCancelVote.Enabled = false;
-            btnVoting.Enabled = btnPreview.Enabled = true;
-            TogglePlayButtons(true);
             if (isPlayer1Active)
                 ClickLeft();
             else ClickRight();
-            timer.Stop();
-            game.CloseVoting();
-            obs.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.CountdownSource);
-            //  game.ResetVoting();
+            obs.HideItem(Properties.Settings.Default.ChampionshipScene,
+                Properties.Settings.Default.CountdownSource);
+            game.IsVotingOpen = false;
+            CloseVoting();
         }
 
+        private Stopwatch watch;
         private void OnTimedEvent(Object source, EventArgs e)
         {
 
@@ -271,11 +284,12 @@ namespace FNSC
             //string[] rightPlayerTimeParts = rightPlayerTime.ToString().Split('.');
             //TimeSpan rightPlayerTimeSpan = new TimeSpan(0, 0, 0, int.Parse(rightPlayerTimeParts[0]), int.Parse(rightPlayerTimeParts[1]));
 
-            Console.WriteLine(playCount);
+            LogToTextbox(playCount.ToString());
             if (playCount < 4) // Each player plays 2x30sec
             {
                 if (isPlayer1Active)
                 {
+                    LogToTextbox($"{watch.Elapsed}: Stopping left, starting right");
                     ClickLeft();
                     ClickRight();
                     isPlayer1Active = false;
@@ -283,6 +297,7 @@ namespace FNSC
                 }
                 else
                 {
+                    LogToTextbox($"{watch.Elapsed}: Stopping right, starting left"); 
                     ClickRight();
                     ClickLeft();
                     isPlayer1Active = true;
@@ -297,16 +312,26 @@ namespace FNSC
                     {
                         bot.SendMessage("10 seconds left to vote!");
                         secTimer.Stop();
+                        secTimer = null;
+                        LogToTextbox($"{watch.Elapsed}: Sent countdown message");
                     };
                     secTimer.Start();
+                    LogToTextbox($"{watch.Elapsed}: Started countdown message timer");
                 }
             }
             else
             {
+                LogToTextbox($"{watch.Elapsed}: Time is up.");
                 if (isPlayer1Active)
+                {
                     ClickLeft();
+                    LogToTextbox($"{watch.Elapsed}: Stopping left");
+                }
                 else
+                {
                     ClickRight();
+                    LogToTextbox($"{watch.Elapsed}: Stopping right");
+                }
                 CloseVoting();
             }
         }
@@ -315,20 +340,34 @@ namespace FNSC
         {
             if (game.IsVotingOpen)
             {
+                LogToTextbox($"{watch.Elapsed}: Voting is open, so close it");
                 obs.HideItem(Properties.Settings.Default.ChampionshipScene,
                     Properties.Settings.Default.CountdownSource);
-                timer.Stop();
                 Console.WriteLine("Both players have completed their play time.");
 
                 if (game.CurrentRound.CurrentBattle.Votes1 == game.CurrentRound.CurrentBattle.Votes2)
+                {
                     bot.SendMessage("It's a tie!");
+                    LogToTextbox($"{watch.Elapsed}: It's a tie");
+
+                }
                 else
+                {
+                    LogToTextbox($"{watch.Elapsed}: Votes are different, find winner");
+
                     game.CloseVoting();
+
+                }
             }
+            timer.Stop();
             btnCancelPreview.Enabled = false;
             btnCancelVote.Enabled = false;
             btnVoting.Enabled = true;
             btnPreview.Enabled = true;
+            timer = null;
+            isPlayer1Active = false;
+            LogToTextbox($"{watch.Elapsed}: CloseVoting() End: Timer nulled");
+
 
         }
 
@@ -347,6 +386,7 @@ namespace FNSC
                 ClickLeft();
             else ClickRight();
             timer.Stop();
+            timer = null;
         }
 
         private Timer recordTimer;

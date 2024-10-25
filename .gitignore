@@ -397,3 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /FNSC/App.config
+/FNSC/Properties/Settings.settings

@@ -101,7 +101,7 @@
             btnStartChampionship.Location = new System.Drawing.Point(453, 299);
             btnStartChampionship.Name = "btnStartChampionship";
             btnStartChampionship.Size = new System.Drawing.Size(214, 40);
-            btnStartChampionship.TabIndex = 0;
+            btnStartChampionship.TabIndex = 17;
             btnStartChampionship.Text = "Start Championship";
             btnStartChampionship.UseVisualStyleBackColor = true;
             btnStartChampionship.Click += btnStartChampionship_Click;
@@ -238,7 +238,8 @@
             txtSubmissionUrl.Location = new System.Drawing.Point(285, 40);
             txtSubmissionUrl.Name = "txtSubmissionUrl";
             txtSubmissionUrl.Size = new System.Drawing.Size(121, 21);
-            txtSubmissionUrl.TabIndex = 5;
+            txtSubmissionUrl.TabIndex = 2;
+            txtSubmissionUrl.KeyDown += txtSubmissionUrl_KeyDown;
             // 
             // comboSubmissionViewer
             // 
@@ -246,14 +247,14 @@
             comboSubmissionViewer.Location = new System.Drawing.Point(285, 12);
             comboSubmissionViewer.Name = "comboSubmissionViewer";
             comboSubmissionViewer.Size = new System.Drawing.Size(121, 21);
-            comboSubmissionViewer.TabIndex = 6;
+            comboSubmissionViewer.TabIndex = 1;
             // 
             // btnSubmit
             // 
             btnSubmit.Location = new System.Drawing.Point(285, 67);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new System.Drawing.Size(121, 23);
-            btnSubmit.TabIndex = 7;
+            btnSubmit.TabIndex = 3;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
@@ -285,7 +286,7 @@
             btnResetChampionship.Location = new System.Drawing.Point(673, 253);
             btnResetChampionship.Name = "btnResetChampionship";
             btnResetChampionship.Size = new System.Drawing.Size(82, 86);
-            btnResetChampionship.TabIndex = 10;
+            btnResetChampionship.TabIndex = 18;
             btnResetChampionship.Text = "Reset Championship";
             btnResetChampionship.UseVisualStyleBackColor = false;
             btnResetChampionship.Click += BtnResetChampionshipClick;
@@ -387,14 +388,14 @@
             txtTheme.Location = new System.Drawing.Point(546, 14);
             txtTheme.Name = "txtTheme";
             txtTheme.Size = new System.Drawing.Size(121, 21);
-            txtTheme.TabIndex = 16;
+            txtTheme.TabIndex = 4;
             // 
             // numSongsPerPerson
             // 
             numSongsPerPerson.Location = new System.Drawing.Point(546, 172);
             numSongsPerPerson.Name = "numSongsPerPerson";
             numSongsPerPerson.Size = new System.Drawing.Size(121, 21);
-            numSongsPerPerson.TabIndex = 17;
+            numSongsPerPerson.TabIndex = 12;
             numSongsPerPerson.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // numPreviewTime
@@ -403,7 +404,7 @@
             numPreviewTime.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numPreviewTime.Name = "numPreviewTime";
             numPreviewTime.Size = new System.Drawing.Size(120, 21);
-            numPreviewTime.TabIndex = 18;
+            numPreviewTime.TabIndex = 13;
             numPreviewTime.Value = new decimal(new int[] { 120, 0, 0, 0 });
             // 
             // numVotingTime
@@ -411,7 +412,7 @@
             numVotingTime.Location = new System.Drawing.Point(547, 226);
             numVotingTime.Name = "numVotingTime";
             numVotingTime.Size = new System.Drawing.Size(120, 21);
-            numVotingTime.TabIndex = 19;
+            numVotingTime.TabIndex = 14;
             numVotingTime.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
             // numChampionshipNumber
@@ -419,7 +420,7 @@
             numChampionshipNumber.Location = new System.Drawing.Point(547, 41);
             numChampionshipNumber.Name = "numChampionshipNumber";
             numChampionshipNumber.Size = new System.Drawing.Size(120, 21);
-            numChampionshipNumber.TabIndex = 20;
+            numChampionshipNumber.TabIndex = 5;
             numChampionshipNumber.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnInitChampionship
@@ -427,7 +428,7 @@
             btnInitChampionship.Location = new System.Drawing.Point(453, 253);
             btnInitChampionship.Name = "btnInitChampionship";
             btnInitChampionship.Size = new System.Drawing.Size(105, 40);
-            btnInitChampionship.TabIndex = 21;
+            btnInitChampionship.TabIndex = 15;
             btnInitChampionship.Text = "Prepare Championship";
             btnInitChampionship.UseVisualStyleBackColor = true;
             btnInitChampionship.Click += btnInitChampionship_Click;
@@ -492,7 +493,7 @@
             chkAllowDoubles.Location = new System.Drawing.Point(458, 67);
             chkAllowDoubles.Name = "chkAllowDoubles";
             chkAllowDoubles.Size = new System.Drawing.Size(64, 17);
-            chkAllowDoubles.TabIndex = 32;
+            chkAllowDoubles.TabIndex = 6;
             chkAllowDoubles.Text = "Doubles";
             chkAllowDoubles.UseVisualStyleBackColor = true;
             // 
@@ -502,7 +503,7 @@
             chkAllowVoteCorrection.Location = new System.Drawing.Point(528, 67);
             chkAllowVoteCorrection.Name = "chkAllowVoteCorrection";
             chkAllowVoteCorrection.Size = new System.Drawing.Size(94, 17);
-            chkAllowVoteCorrection.TabIndex = 33;
+            chkAllowVoteCorrection.TabIndex = 7;
             chkAllowVoteCorrection.Text = "Vote changing";
             chkAllowVoteCorrection.UseVisualStyleBackColor = true;
             // 
@@ -520,15 +521,15 @@
             txtMaxLength.Location = new System.Drawing.Point(547, 117);
             txtMaxLength.Name = "txtMaxLength";
             txtMaxLength.Size = new System.Drawing.Size(120, 21);
-            txtMaxLength.TabIndex = 37;
-            txtMaxLength.Text = "0";
+            txtMaxLength.TabIndex = 10;
+            txtMaxLength.Text = "10:00";
             // 
             // txtMinLength
             // 
             txtMinLength.Location = new System.Drawing.Point(547, 90);
             txtMinLength.Name = "txtMinLength";
             txtMinLength.Size = new System.Drawing.Size(120, 21);
-            txtMinLength.TabIndex = 40;
+            txtMinLength.TabIndex = 9;
             txtMinLength.Text = "2:30";
             // 
             // label8
@@ -546,7 +547,7 @@
             btnModifyChampionship.Location = new System.Drawing.Point(562, 253);
             btnModifyChampionship.Name = "btnModifyChampionship";
             btnModifyChampionship.Size = new System.Drawing.Size(105, 40);
-            btnModifyChampionship.TabIndex = 39;
+            btnModifyChampionship.TabIndex = 16;
             btnModifyChampionship.Text = "Modify Championship";
             btnModifyChampionship.UseVisualStyleBackColor = true;
             btnModifyChampionship.Click += btnModifyChampionship_Click;
@@ -557,7 +558,7 @@
             chkWhispers.Location = new System.Drawing.Point(628, 67);
             chkWhispers.Name = "chkWhispers";
             chkWhispers.Size = new System.Drawing.Size(95, 17);
-            chkWhispers.TabIndex = 41;
+            chkWhispers.TabIndex = 8;
             chkWhispers.Text = "Send whispers";
             chkWhispers.UseVisualStyleBackColor = true;
             // 

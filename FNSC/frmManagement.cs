@@ -49,7 +49,7 @@ namespace FNSC
         private BindingList<Song> queueList;
         private bool queueOpen = false;
         private static readonly ILog log = LogManager.GetLogger(typeof(frmManagement));
-
+        private frmChampionship frm;
         public SubmissionQueue SubmissionQueue
         {
             get
@@ -78,17 +78,28 @@ namespace FNSC
             isDebug = enableDebug;
             ToggleDebugFeatures();
             RefreshUserComboBox();
-         
 
-         
+
+
         }
 
         private void StreamerbotClient_ActionExecuted(object sender, ActionExecutedEventArgs e)
         {
             string t = e.Action.@event.type;
-            if (e.Action.data.actionId == "cc807cf9-980c-4332-a5e4-9ad48349d4b2")
+            if (e.Action.data.actionId == "cc807cf9-980c-4332-a5e4-9ad48349d4b2" && frm != null)
             {
-
+                //game.IsVotingOpen = false;
+                //game.NextBattle();
+                //frm.RefreshBoth();
+                //frm.GridControl1.DataSource = game.SubmittedSongs;
+                //frm.GridControl1.RefreshDataSource();
+                //frm.GridControl1.Invalidate();
+            }else if (e.Action.data.actionId == "d32fd594-56e5-4c3e-8a87-43dccbfbac57" && !string.IsNullOrEmpty(e.Action.data.arguments.coinFlip))
+            {
+                game.CurrentRound.SetWinnerFromCoinflip(e.Action.data.arguments.coinFlip);
+                
+                if(game.CurrentRound.CurrentBattle.Winner != null && game.CurrentRound.BattleCount > 1)
+                    streamerbotClient.SendMessage("The coin chose " + game.CurrentRound.CurrentBattle.Winner.Description + " by "+ game.CurrentRound.CurrentBattle.Winner.Channel);
             }
         }
 
@@ -131,22 +142,23 @@ namespace FNSC
             comboSubmissionViewer.DataSource = ChampionshipContext.ContextInstance.Viewers.OrderBy(v => v.display).ToList();
             comboSubmissionViewer.DisplayMember = "display";
             comboSubmissionViewer.ValueMember = "id";
+            comboSubmissionViewer.SelectedValue = "206992018";
         }
         private void RefreshGameComboBox(Game game1 = null)
         {
-            ChampionshipContext.ContextInstance.Games
-                .Include(game => game.PreSubmittedSongs)
-                .ThenInclude(song => song.Viewer)
-                .Include(game => game.Rounds)
-                .ThenInclude(round => round.Battles)
-                .ThenInclude(battle => battle.Song1)
-                .ThenInclude(song => song.Viewer)
-                .Include(game => game.CurrentRound.Battles)
+            //ChampionshipContext.ContextInstance.Games
+            //    .Include(game => game.PreSubmittedSongs)
+            //    .ThenInclude(song => song.Viewer)
+            //    .Include(game => game.Rounds)
+            //    .ThenInclude(round => round.Battles)
+            //    .ThenInclude(battle => battle.Song1)
+            //    .ThenInclude(song => song.Viewer)
+            //    .Include(game => game.CurrentRound.Battles)
 
-                .Include(game => game.CurrentRound.CurrentBattle)
-                .Include(game => game.CurrentRound.FinishedBattles)
+            //    .Include(game => game.CurrentRound.CurrentBattle)
+            //    .Include(game => game.CurrentRound.FinishedBattles)
 
-                .ToList();
+            //    .ToList();
             cboGames.Properties.DataSource = ChampionshipContext.ContextInstance.Games.ToList();
             cboGames.Properties.DisplayMember = "ComboBoxText";
             cboGames.Properties.KeyMember = "Id";
@@ -189,7 +201,7 @@ namespace FNSC
                 }
                 if (SubmissionQueue.Count(s => s.Viewer.id == submitttedSong.Viewer.id) >= game?.NoOfSongsPerPerson)
                 {
-                    if(game.SendWhispers)
+                    if (game.SendWhispers)
                         streamerbotClient.SendWhisper(submitttedSong.Viewer.display,
                         "Sorry, " + submitttedSong.Viewer.display +
                         ", you have already submitted the allowed number of songs!");
@@ -230,7 +242,7 @@ namespace FNSC
                 if (game.MaxSongLength.TotalMilliseconds > 0 && game.MaxSongLength < submitttedSong.Length)
                 {
 
-                    streamerbotClient.SendMessage("Sorry, @"+submitttedSong.Viewer.display+", your Song could not be added because it is too long!");
+                    streamerbotClient.SendMessage("Sorry, @" + submitttedSong.Viewer.display + ", your Song could not be added because it is too long!");
                     return false;
                 }
                 {
@@ -254,7 +266,7 @@ namespace FNSC
                         obsClient.SetText(Properties.Settings.Default.MainTextSource, text);
                         // streamerbotClient.SendMessage("Sorry, " + submitttedSong.Viewer.display + ", you have already submitted the allowed number of songs!");
                     }
-                   
+
                     return true;
                 }
             }
@@ -375,7 +387,7 @@ namespace FNSC
                     break;
             }
             game.StartChampionship();
-            btnSaveGame_Click(null, null);
+            //btnSaveGame_Click(null, null);
             obsClient.SetText(Properties.Settings.Default.LeftVotesSource, "0");
             obsClient.SetText(Properties.Settings.Default.RightVotesSource, "0");
             obsClient.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerSource);
@@ -384,10 +396,10 @@ namespace FNSC
             obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.RightPlayerSource);
             obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.LeftPlayerSource);
             obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.VsSource);
-            
-            obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.RoundHeaderSource);
 
-            frmChampionship frm = new frmChampionship(game, obsClient, streamerbotClient);
+            obsClient.ShowItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.RoundHeaderSource);
+            obsClient.EnableFilter(Properties.Settings.Default.MainChampionshipScene, Properties.Settings.Default.CenterFilterName);
+            frm = new frmChampionship(game, obsClient, streamerbotClient);
             frm.Show();
         }
 
@@ -513,7 +525,8 @@ namespace FNSC
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (comboSubmissionViewer.SelectedValue != null)
+            
+            if (comboSubmissionViewer.SelectedValue != null && txtSubmissionUrl.Text.Length > 0)
             {
                 Song submitttedSong =
                     YouTubeClient.GetYTVideoDetails(txtSubmissionUrl.Text, Properties.Settings.Default.YtApiKey);
@@ -533,9 +546,9 @@ namespace FNSC
 
 
 
-            //ChampionshipContext.ContextInstance.Games.Update(game);
-            //ChampionshipContext.ContextInstance.SaveChanges();
-            //RefreshGameComboBox(game);
+            ChampionshipContext.ContextInstance.Games.Update(game);
+            ChampionshipContext.ContextInstance.SaveChanges();
+            RefreshGameComboBox(game);
         }
 
         private void btnDummyData_Click(object sender, EventArgs e)
@@ -628,6 +641,8 @@ namespace FNSC
             obsClient.HideItem(Properties.Settings.Default.ChampionshipScene, Properties.Settings.Default.WinnerTopSource);
             btnInitChampionship.Enabled = true;
             btnStartChampionship.Enabled = btnModifyChampionship.Enabled = btnResetChampionship.Enabled = false;
+            game = null;
+            gridControl1.DataSource = null;
         }
 
 
@@ -660,7 +675,8 @@ namespace FNSC
                 return;
             foreach (Round gameRound in game.Rounds)
             {
-                ChampionshipContext.ContextInstance.Entry(gameRound).Collection(g => g.Battles).Load();
+                if(gameRound != null)
+                    ChampionshipContext.ContextInstance.Entry(gameRound).Collection(g => g.Battles).Load();
             }
             ChampionshipContext.ContextInstance.Entry(game).Collection(g => g.SubmittedSongs).Load();
             if (queueList == null)
@@ -746,5 +762,10 @@ namespace FNSC
 
         }
 
+        private void txtSubmissionUrl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                btnSubmit_Click(btnSubmit, EventArgs.Empty);
+        }
     }
 }

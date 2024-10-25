@@ -97,18 +97,6 @@ namespace FNSC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("E:\\SB Extensions\\FNSC")]
-        public string WebserverPath {
-            get {
-                return ((string)(this["WebserverPath"]));
-            }
-            set {
-                this["WebserverPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("537f127a-5066-4166-a32d-b57e15fb5786")]
         public string SendMessageActionID {
             get {
@@ -308,6 +296,79 @@ namespace FNSC.Properties {
             }
             set {
                 this["WinnerBottomSource"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("E:\\SB Extensions\\SongChampionships")]
+        public string WebserverPath {
+            get {
+                return ((string)(this["WebserverPath"]));
+            }
+            set {
+                this["WebserverPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://discord.com/api/webhooks/1083726664443379714/dE_HH5mjyJnP6u2LnyJ8YHNGltCA" +
+            "Ih0shlCUZywcXKifpzeVU7z5d7voWNeJnqIQbbFF")]
+        public string WebhookUrl {
+            get {
+                return ((string)(this["WebhookUrl"]));
+            }
+            set {
+                this["WebhookUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MainCam Center")]
+        public string CenterFilterName {
+            get {
+                return ((string)(this["CenterFilterName"]));
+            }
+            set {
+                this["CenterFilterName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MainCam Corner")]
+        public string CornerFilterName {
+            get {
+                return ((string)(this["CornerFilterName"]));
+            }
+            set {
+                this["CornerFilterName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FNSC")]
+        public string MainChampionshipScene {
+            get {
+                return ((string)(this["MainChampionshipScene"]));
+            }
+            set {
+                this["MainChampionshipScene"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NoBuddyIsPerfect")]
+        public string StreamerName {
+            get {
+                return ((string)(this["StreamerName"]));
+            }
+            set {
+                this["StreamerName"] = value;
             }
         }
     }

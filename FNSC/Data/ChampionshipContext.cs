@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using DevExpress.XtraRichEdit.API.Internal;
 
 namespace FNSC.Data
@@ -35,7 +36,7 @@ namespace FNSC.Data
         public DbSet<Round> Rounds { get; set; }
         public DbSet<Battle> Battles { get; set; }
 
-        public string DbPath { get; } = "games.db";
+        public string DbPath { get; } = Path.Combine(Path.GetTempPath(), "FNSC","games.db");
 
 
         public ChampionshipContext()
@@ -51,10 +52,7 @@ namespace FNSC.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Round>().HasMany<Battle>(r => r.Battles).WithOne(b => b.Round)
-                .HasForeignKey(b => b.RoundId).IsRequired();
-
-            modelBuilder.Entity<Round>().HasOne<Battle>(r => r.CurrentBattle);
+              modelBuilder.Entity<Round>().HasOne<Battle>(r => r.CurrentBattle);
 
             modelBuilder.Entity<Game>().HasMany<Song>(g => g.SubmittedSongs);
             modelBuilder.Entity<Game>().HasMany<Song>(g => g.PreSubmittedSongs);

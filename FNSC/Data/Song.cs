@@ -30,10 +30,38 @@ namespace FNSC.Data
         public bool won { get; set; } = false;
         public int InitialStarttime { get; set; }
         public int Starttime { get; set; }
-
+        [NotMapped]
+        public int Votes { get; set; }
         public override string ToString()
         {
             return Description;
+        }
+        public string FullUrl
+        {
+            get
+            {
+                return "https://www.youtube.com/watch?v=" + Code + "&t=" + InitialStarttime;
+            }
+        }
+        public string Export()
+        {
+            string export = "{";
+            export += "\"Artist\":\"" + Channel + "\",";
+            export += "\"Title\":\"" + Description + "\",";
+            export += "\"URL\":\"" + FullUrl + "\",";
+            export += "\"User\":\"" + Viewer.display + "\"";
+            export += "}";
+            return export;
+        }
+
+        public string DiscordExport()
+        {
+            string export = "";
+            export += Description + "\n";
+            export += "by: " + Channel + "\n";
+            export += "(Link: " + FullUrl + ")\n";
+            export += "Submitted by: " + Viewer.display + "\n";
+            return export;
         }
     }
 }

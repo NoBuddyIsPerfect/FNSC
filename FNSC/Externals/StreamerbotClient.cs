@@ -474,7 +474,7 @@ namespace FNSC.Externals
         
         public void SendWhisper(string user, string message)
         {
-            if (sendChatMessages && !string.IsNullOrEmpty(Properties.Settings.Default.SendWhisperActionID) && !string.IsNullOrEmpty(Properties.Settings.Default.SendWhisperActionName))
+            if (sendChatMessages && !string.IsNullOrEmpty(Properties.Settings.Default.SendWhisperActionID) && !string.IsNullOrEmpty(Properties.Settings.Default.SendWhisperActionName) && user != Properties.Settings.Default.StreamerName)
                 ExecuteAction(Properties.Settings.Default.SendWhisperActionID, Properties.Settings.Default.SendWhisperActionName, new Dictionary<string, string>() { { "MessagePart", message }, {"username", user} });
 
         }

@@ -129,6 +129,23 @@ namespace FNSC.Externals
                 string t = e.Message;
             }
         }
+        public void EnableFilter(string source, string filter)
+        {
+            if (!obs.IsConnected)
+            {
+                return;
+            }
+
+            try
+            {
+                obs.SetSourceFilterEnabled(source, filter, true);
+                
+            }
+            catch(Exception e)
+            {
+                string t = e.Message;
+            }
+        }
 
         /// <summary>
         /// Modify a source in a scene to execute <paramref name="action"/>

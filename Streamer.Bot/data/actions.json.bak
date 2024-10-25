@@ -1,7 +1,7 @@
 {
   "collapsedGroups": [],
-  "version": 12,
-  "t": "2024-09-27T16:56:56.6358721+02:00",
+  "version": 15,
+  "t": "2024-10-25T18:40:19.7837236+02:00",
   "blocking": false,
   "queues": [],
   "actions": [
@@ -101,34 +101,25 @@
       "collapsedGroups": []
     },
     {
-      "id": "19878ab9-5791-4f03-b3df-eb2b22ae6e18",
+      "id": "d32fd594-56e5-4c3e-8a87-43dccbfbac57",
       "queue": null,
       "enabled": true,
       "excludeFromHistory": false,
-      "name": "test",
+      "name": "Coinflip Result",
       "group": "",
       "alwaysRun": false,
       "randomAction": false,
       "concurrent": false,
-      "triggers": [
-        {
-          "commandId": "9ad89fc3-e9ca-4e58-93c7-4622e79006f9",
-          "id": "66810ddb-a0d0-456e-8094-bbc5ae407d2e",
-          "type": 401,
-          "enabled": true,
-          "exclusions": []
-        }
-      ],
+      "triggers": [],
       "actions": [
         {
-          "text": "sdfsdf",
+          "text": "coinflip result received",
           "preferredAccount": 0,
-          "replyId": "%msgId%",
-          "id": "2b196568-a909-44cf-9393-c7f676d1ca86",
+          "id": "37898061-c75d-4bf2-9c53-d6b5ccccf1fa",
           "weight": 0.0,
-          "type": 560,
+          "type": 10,
           "group": null,
-          "enabled": true,
+          "enabled": false,
           "index": 0
         }
       ],

@@ -29,9 +29,8 @@ namespace FNSC.Data
         public Dictionary<Viewer, string> Voted = new Dictionary<Viewer, string>();
         public int Position { get; set; }
 
-        public int RoundId { get; set; }
-        public Round Round { get; set; }
-
+        public int RoundNumber { get; set; }
+     
         public void CloseVoting()
         {
             if (Votes1 != Votes2)
@@ -60,7 +59,33 @@ namespace FNSC.Data
             }
             if(Winner != null)
                 Winner.Starttime = Winner.InitialStarttime + 90 +
-                                   ((Round.RoundNumber - 1) * 30);
+                                   ((RoundNumber - 1) * 30);
+        }
+
+        public string Export()
+        {
+            string export = "{";
+            export += "\"Song1\":{";
+            export += Song1.Export();
+            export += "},";
+            export += "\"Song2\":{";
+            export += Song2.Export();
+            export += "},";
+            export += "\"Winner\":{";
+            export += Winner?.Export();
+            export += "},";
+            export += "\"Voters\":\"";
+            foreach (KeyValuePair<Viewer, string> voter in Voted)
+                export += voter.Key.display + ",";
+            export = export.TrimEnd(',');
+            export += "\",";
+            export += "\"Votes1\":\"" + Votes1 + "\",";
+            export += "\"Votes2\":\"" + Votes2 + "\",";
+            export += "\"Position\":\"" + Position + "\"";
+
+            export += "}";
+            return export;
+
         }
     }
 }

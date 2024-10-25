@@ -50,9 +50,10 @@
             btnRightWins = new System.Windows.Forms.Button();
             btnLeftWins = new System.Windows.Forms.Button();
             btnNextRound = new System.Windows.Forms.Button();
-            gridControl1 = new DevExpress.XtraGrid.GridControl();
+            GridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            colNo = new DevExpress.XtraGrid.Columns.GridColumn();
             colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             colChannel = new DevExpress.XtraGrid.Columns.GridColumn();
             colLength = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,7 +63,7 @@
             colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             colStarttime = new DevExpress.XtraGrid.Columns.GridColumn();
             txtLogOutput = new System.Windows.Forms.TextBox();
-            colNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            colVotes = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -70,7 +71,7 @@
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numTotalPreviewTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numTotalVotingTime).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             SuspendLayout();
             // 
@@ -299,21 +300,21 @@
             btnNextRound.UseVisualStyleBackColor = true;
             btnNextRound.Click += btnNextRound_Click;
             // 
-            // gridControl1
+            // GridControl1
             // 
-            gridControl1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            gridControl1.Location = new System.Drawing.Point(1171, 563);
-            gridControl1.MainView = gridView1;
-            gridControl1.Name = "gridControl1";
-            gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemCheckEdit1 });
-            gridControl1.Size = new System.Drawing.Size(344, 311);
-            gridControl1.TabIndex = 3;
-            gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            GridControl1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            GridControl1.Location = new System.Drawing.Point(1171, 563);
+            GridControl1.MainView = gridView1;
+            GridControl1.Name = "GridControl1";
+            GridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemCheckEdit1 });
+            GridControl1.Size = new System.Drawing.Size(344, 311);
+            GridControl1.TabIndex = 3;
+            GridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
             // 
             gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colNo, colDescription, colChannel, colLength, colIsBlocked, colUrl, colViewer, colCode, colStarttime, colOut });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colNo, colDescription, colChannel, colLength, colIsBlocked, colUrl, colViewer, colCode, colStarttime, colOut, colVotes });
             gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Column = colOut;
@@ -324,7 +325,7 @@
             formatConditionRuleValue1.Expression = "true";
             gridFormatRule1.Rule = formatConditionRuleValue1;
             gridView1.FormatRules.Add(gridFormatRule1);
-            gridView1.GridControl = gridControl1;
+            gridView1.GridControl = GridControl1;
             gridView1.Name = "gridView1";
             gridView1.OptionsBehavior.Editable = false;
             gridView1.OptionsCustomization.AllowColumnMoving = false;
@@ -343,6 +344,15 @@
             // 
             colId.FieldName = "Id";
             colId.Name = "colId";
+            // 
+            // colNo
+            // 
+            colNo.Caption = "No";
+            colNo.FieldName = "gridColumn1";
+            colNo.Name = "colNo";
+            colNo.UnboundDataType = typeof(int);
+            colNo.Visible = true;
+            colNo.VisibleIndex = 0;
             // 
             // colDescription
             // 
@@ -407,14 +417,13 @@
             txtLogOutput.Size = new System.Drawing.Size(338, 280);
             txtLogOutput.TabIndex = 19;
             // 
-            // colNo
+            // colVotes
             // 
-            colNo.Caption = "No";
-            colNo.FieldName = "gridColumn1";
-            colNo.Name = "colNo";
-            colNo.UnboundDataType = typeof(int);
-            colNo.Visible = true;
-            colNo.VisibleIndex = 0;
+            colVotes.Caption = "Votes";
+            colVotes.FieldName = "Votes";
+            colVotes.Name = "colVotes";
+            colVotes.Visible = true;
+            colVotes.VisibleIndex = 9;
             // 
             // frmChampionship
             // 
@@ -422,7 +431,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1515, 874);
             Controls.Add(txtLogOutput);
-            Controls.Add(gridControl1);
+            Controls.Add(GridControl1);
             Controls.Add(btnNextRound);
             Controls.Add(btnLeftWins);
             Controls.Add(btnRightWins);
@@ -450,7 +459,7 @@
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numTotalPreviewTime).EndInit();
             ((System.ComponentModel.ISupportInitialize)numTotalVotingTime).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -477,7 +486,7 @@
         private System.Windows.Forms.Button btnRightWins;
         private System.Windows.Forms.Button btnLeftWins;
         private System.Windows.Forms.Button btnNextRound;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        public DevExpress.XtraGrid.GridControl GridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
@@ -492,5 +501,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.TextBox txtLogOutput;
         private DevExpress.XtraGrid.Columns.GridColumn colNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colVotes;
     }
 }

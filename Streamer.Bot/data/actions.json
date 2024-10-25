@@ -1,7 +1,7 @@
 {
   "collapsedGroups": [],
-  "version": 12,
-  "t": "2024-09-27T16:56:59.4976477+02:00",
+  "version": 15,
+  "t": "2024-10-25T22:51:01.002214+02:00",
   "blocking": false,
   "queues": [],
   "actions": [
@@ -94,6 +94,32 @@
           "type": 1002,
           "group": null,
           "enabled": true,
+          "index": 0
+        }
+      ],
+      "actionGroups": [],
+      "collapsedGroups": []
+    },
+    {
+      "id": "d32fd594-56e5-4c3e-8a87-43dccbfbac57",
+      "queue": null,
+      "enabled": true,
+      "excludeFromHistory": false,
+      "name": "Coinflip Result",
+      "group": "",
+      "alwaysRun": false,
+      "randomAction": false,
+      "concurrent": false,
+      "triggers": [],
+      "actions": [
+        {
+          "text": "coinflip result received",
+          "preferredAccount": 0,
+          "id": "37898061-c75d-4bf2-9c53-d6b5ccccf1fa",
+          "weight": 0.0,
+          "type": 10,
+          "group": null,
+          "enabled": false,
           "index": 0
         }
       ],

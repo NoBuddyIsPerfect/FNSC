@@ -1,10 +1,274 @@
 {
   "collapsedGroups": [],
   "version": 3,
-  "t": "2024-09-24T18:48:12.4276335+02:00",
+  "t": "2024-10-25T18:40:19.7852287+02:00",
   "rewards": [
     {
-      "id": "938ef730-fef8-47fb-9c4b-2cb9dd73fa4e",
+      "id": "f3b96076-3afa-48b4-a995-453c8445896a",
+      "name": "Hide Buddy",
+      "prompt": "",
+      "group": null,
+      "cost": 500,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#000000"
+    },
+    {
+      "id": "443ae57b-3f48-420a-8648-798f7ab5ab0c",
+      "name": "Save me!",
+      "prompt": "Hit the qucksave for me! The game will save automatically! (5min cooldown)",
+      "group": null,
+      "cost": 99,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF0000"
+    },
+    {
+      "id": "9c683efd-1ffb-4c33-bded-9d3a7caa647d",
+      "name": "Current Weather",
+      "prompt": "Please enter a location",
+      "group": null,
+      "cost": 180,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#1DDA55"
+    },
+    {
+      "id": "63995356-a77a-48ed-979c-b19500d27571",
+      "name": "Time out another chatter for 30s",
+      "prompt": "Who do you want to timeout? The user will be timed out for 30s!",
+      "group": null,
+      "cost": 2500,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#97E7D9"
+    },
+    {
+      "id": "5b67a5ba-202f-4ba7-a525-9d49b6ab9be6",
+      "name": "The greatest thing!",
+      "prompt": "Jacksepticeye shows you the greatest thing in existence!",
+      "group": null,
+      "cost": 250,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#ED63D0"
+    },
+    {
+      "id": "3c6ba950-e411-43f9-8276-c7151a3765cb",
+      "name": "Move in",
+      "prompt": "Move to Buddyville! I'll name a character after you!",
+      "group": null,
+      "cost": 2500,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#DB84AC"
+    },
+    {
+      "id": "4e6d453e-f966-4a82-a084-3c3e70397614",
+      "name": "Mark a bingo square",
+      "prompt": "",
+      "group": null,
+      "cost": 69,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#57B1C0"
+    },
+    {
+      "id": "1d125b0d-08cd-40da-83c0-2c92f9dd705a",
+      "name": "End stream this instant!",
+      "prompt": "BE AWARE! This redeem ends the stream right away! Nothing I can do to stop it! Be sure you really want to do this! And you WILL be blamed! ;)",
+      "group": null,
+      "cost": 50000,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF0000"
+    },
+    {
+      "id": "3b649f5d-8ba3-4beb-90dc-4aa97efa3340",
+      "name": "VIP",
+      "prompt": "",
+      "group": null,
+      "cost": 80000,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF0000"
+    },
+    {
+      "id": "4fd00700-a400-400c-be80-76395e418b57",
+      "name": "BOOP THE SNOOT!",
+      "prompt": "Boop Buddys snoot!",
+      "group": null,
+      "cost": 499,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#F9B78B"
+    },
+    {
+      "id": "b3698f0a-b14b-4c21-9b3b-d1640f54d4ed",
+      "name": "Print it!",
+      "prompt": "Send me a physical message on the printer!",
+      "group": null,
+      "cost": 750,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#0000FF"
+    },
+    {
+      "id": "86ea3102-3b0c-4c20-896d-ea2ec080eca1",
+      "name": "Credits",
+      "prompt": "Run the end creditc",
+      "group": null,
+      "cost": 2669,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#6F4BFE"
+    },
+    {
+      "id": "b548dc77-b842-4c2f-941c-76667ceb4b59",
+      "name": "Postcard from Buddy",
+      "prompt": "Receive a postcard with Buddys autograph (paw print)",
+      "group": null,
+      "cost": 250000,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#03E90F"
+    },
+    {
+      "id": "a053376a-0297-4681-a0a6-9bebc39a7f55",
+      "name": "Breaking News",
+      "prompt": "What is the headline you think everyone needs to see? (max 40 characters)",
+      "group": null,
+      "cost": 1420,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FFFF00"
+    },
+    {
+      "id": "ca133843-3464-4b19-b846-b6fc301db5c7",
+      "name": "Technical difficulties",
+      "prompt": "We are experiencing technical difficulties!",
+      "group": null,
+      "cost": 1999,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#3B34CE"
+    },
+    {
+      "id": "52b2bb63-a628-4c09-a51e-f3e32aea08c5",
+      "name": "Hide the streamer AND Buddy",
+      "prompt": "",
+      "group": null,
+      "cost": 750,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#000000"
+    },
+    {
+      "id": "d41bc8c6-5176-4817-89f5-3e151d304033",
+      "name": "Nobody was here before stream.... :(",
+      "prompt": "Sorry, Credulus found the diamond already ;)",
+      "group": null,
+      "cost": 1,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#B8DDDD"
+    },
+    {
+      "id": "8f5469a6-8b58-4f5d-b31e-d9162ffb27ae",
+      "name": "Hide the streamer",
+      "prompt": "If you think you can't see something because of my cam, hide it for 60 seconds",
+      "group": null,
+      "cost": 500,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#000000"
+    },
+    {
+      "id": "d40355b3-7b71-4a4b-a1df-af3a4cba29c9",
+      "name": "Skip song",
+      "prompt": "Skip the current song (Be aware: Only 2 skips per person and stream ;) )",
+      "group": null,
+      "cost": 299,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#49A818"
+    },
+    {
+      "id": "d17224aa-6444-40e5-b80d-6d37fa49983b",
+      "name": "Start Stream Bingo Vote",
+      "prompt": "Trigger a new voting round in Stream Bingo and vote for the next event to be called.",
+      "group": null,
+      "cost": 4200,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#7C0BE6"
+    },
+    {
+      "id": "db603b5f-cc0f-409b-8dca-84398745e576",
+      "name": "Sacrifice yourself",
+      "prompt": "Time yourself out for 30 secs",
+      "group": null,
+      "cost": 1,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#6361E6"
+    },
+    {
+      "id": "92e4ebd6-519e-41da-8a7c-12abd090d30a",
+      "name": "Small treat for Buddy",
+      "prompt": "",
+      "group": null,
+      "cost": 1500,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF80FF"
+    },
+    {
+      "id": "ce25d3f8-bf8b-4789-b30c-5f06f43d3c57",
+      "name": "Who is the biggest fan?",
+      "prompt": "applepieke_ is currently the biggest fan! Redeem to take the spot!",
+      "group": null,
+      "cost": 100,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#55C701"
+    },
+    {
+      "id": "997ed45b-0f21-42e7-854d-245694a88725",
+      "name": "PLAY THIS GAME!",
+      "prompt": "The game must be from the provided list and I will dedicate a 2 hour stream in the next few weeks to your choice! Make sure to pick a game before redeeming. More info: !playgame",
+      "group": null,
+      "cost": 21479,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF0000"
+    },
+    {
+      "id": "4cc7d935-3641-4406-ab49-485a3f4be640",
       "name": "Spin the wheel",
       "prompt": "To show the chances of winning use the commands: !winchances",
       "group": null,
@@ -15,15 +279,59 @@
       "backgroundColor": "#FFD700"
     },
     {
-      "id": "938ef730-fef8-47fb-9c4b-2cb9dd73fa4e",
-      "name": "Spin the wheel",
-      "prompt": "To show the chances of winning use the commands: !winchances",
+      "id": "3c1390a6-828e-4939-99cd-238ed56d6ef9",
+      "name": "What should I do with the Ketchup??",
+      "prompt": "",
       "group": null,
-      "cost": 499,
+      "cost": 690,
       "userInput": false,
       "persistCounter": false,
       "persistUserCounter": false,
-      "backgroundColor": "#FFD700"
+      "backgroundColor": "#FB6857"
+    },
+    {
+      "id": "04c8de50-b3d1-49e5-81d5-38d91cdf5acc",
+      "name": "Add BetterTTV Emote",
+      "prompt": "Add a BetterTTV emote to NoBuddyIsPerfect's channel for a month. Enter in a link to a BetterTTV emote from betterttv.com. Only emotes with Sharing turned on are supported.",
+      "group": null,
+      "cost": 3600,
+      "userInput": true,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#D50014"
+    },
+    {
+      "id": "76e0e64e-710c-4264-aabb-4ecf95c2b263",
+      "name": "Shut me up!",
+      "prompt": "Tired of my ramblings? Shut me up for 60 seconds!",
+      "group": null,
+      "cost": 1000,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#000000"
+    },
+    {
+      "id": "50dc4c05-cc81-4b41-99d4-58b2c74a4b4f",
+      "name": "Big goodie for Buddy!",
+      "prompt": "Want to be the biggest fan? Redeem to take the spot!",
+      "group": null,
+      "cost": 9000,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#FF80FF"
+    },
+    {
+      "id": "ef820518-51e6-47f7-b93f-75ebbb09bd06",
+      "name": "FIRST?",
+      "prompt": "Who is the first one? ",
+      "group": null,
+      "cost": 1,
+      "userInput": false,
+      "persistCounter": false,
+      "persistUserCounter": false,
+      "backgroundColor": "#628980"
     },
     {
       "id": "d5af8694-ebb2-4fca-bd94-3c488593b520",
@@ -37,7 +345,7 @@
       "backgroundColor": "#FFD700"
     },
     {
-      "id": "d5af8694-ebb2-4fca-bd94-3c488593b520",
+      "id": "938ef730-fef8-47fb-9c4b-2cb9dd73fa4e",
       "name": "Spin the wheel",
       "prompt": "To show the chances of winning use the commands: !winchances",
       "group": null,
@@ -48,5 +356,11 @@
       "backgroundColor": "#FFD700"
     }
   ],
-  "autoRewards": []
+  "autoRewards": [
+    {
+      "type": "gigantify_an_emote",
+      "cost": 0,
+      "userInput": false
+    }
+  ]
 }

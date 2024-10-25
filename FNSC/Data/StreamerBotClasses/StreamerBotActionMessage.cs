@@ -24,6 +24,8 @@ namespace FNSC.Data.StreamerBotClasses
         public string eventSource { get; set; }
         public string runningActionId { get; set; }
         public DateTime actionQueuedAt { get; set; }
+
+        public string coinFlip { get; set; }
     }
 
     public class Data

@@ -27,14 +27,24 @@ namespace FNSC{
             StartPosition = FormStartPosition.CenterParent;
             this.minLength = minLength;
             this.maxLength = maxLength;
-
+            
         }
 
         private void btnSaveStarttime_Click(object sender, EventArgs e)
         {
+            string code = txtCode.Text;
+            if (code.Contains("http"))
+            {
+                Uri uri = new Uri(code);
+                if (code.Contains("w"))
+                    code = uri.Query.Replace("?v=", "");
+                else
+                    code = uri.Segments[uri.Segments.Length - 1];
+
+            }
             if (txtCode.Text != Song.Code)
             {
-                Song newSong = YouTubeClient.GetYTVideoDetails(txtCode.Text.Contains("youtu") ? txtCode.Text : "https://www.youtube.com/watch?v=" + Song.Code, Properties.Settings.Default.YtApiKey);
+                Song newSong = YouTubeClient.GetYTVideoDetails(txtCode.Text.Contains("youtu") ? txtCode.Text : "https://www.youtube.com/watch?v=" + txtCode.Text, Properties.Settings.Default.YtApiKey);
                 if (newSong.Description == "NO TITLE")
                 {
                     MessageBox.Show("Song not found, try again");
@@ -63,7 +73,7 @@ namespace FNSC{
                 Song.Channel = newSong.Channel;
                 Song.Description = newSong.Description;
                 Song.Length = newSong.Length;
-                
+                SongChanged = true;
 
             }
             else

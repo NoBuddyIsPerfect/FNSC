@@ -14,6 +14,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using FNSC.Classes;
 using log4net;
+using EmbedIO.Utilities;
+using Newtonsoft.Json;
+using System.Windows.Media;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows.Forms;
+using FNSC.Externals;
+using System.ComponentModel.Composition.Primitives;
 
 namespace FNSC.Data
 {
@@ -63,9 +70,16 @@ namespace FNSC.Data
         public bool SubmissionsOpen { get; set;  } = false;
         public bool GameFinished { get; set;  } = false;
         public bool AllowDoubles { get; set; } = false;
+        [NotMapped]
+        public string FileName { get { return "Championship_" + ChampionshipNumber + ".txt"; } }
+
+        [NotMapped] 
+        public string FullPath { get { return "C:\\temp\\" + FileName; } }
 
         [NotMapped]
         public bool SendWhispers { get; set; }
+        [NotMapped]
+        public Song Winner { get; set; }
         public TimeSpan MaxSongLength { get; set; } = new TimeSpan(0, 0, 0);
         public TimeSpan MinSongLength { get; set; } = new TimeSpan(0, 2, 30);
 
@@ -74,7 +88,8 @@ namespace FNSC.Data
 
         public event EventHandler<VotesChangedEventArgs> VotesChanged;
         public event EventHandler<VoteReceivedEventArgs> VoteReceived;
-        public event EventHandler<EventArgs> WinnerFound;
+        public event EventHandler<Song> WinnerFound;
+        public event EventHandler<Song> RoundWinnerFound;
         public event EventHandler<EventArgs> StartNextBattle;
         [NotMapped]
         [Display(ShortName = "Text")]
@@ -135,10 +150,21 @@ namespace FNSC.Data
                 handler(this, args);
             }
         }
-        private void OnWinnerFound(EventArgs args)
+        private void OnWinnerFound(Song args)
         {
 
-            EventHandler<EventArgs> handler = WinnerFound;
+            EventHandler<Song> handler = WinnerFound;
+
+            if (handler != null)
+            {
+                handler(this, args);
+            }
+        }
+
+        private void OnRoundWinnerFound(Song args)
+        {
+
+            EventHandler<Song> handler = RoundWinnerFound;
 
             if (handler != null)
             {
@@ -179,9 +205,15 @@ namespace FNSC.Data
                 }else if (!hasVoted)
                 {
                     if (vote == "1")
+                    {
                         currBattle.Votes1++;
+                        currBattle.Song1.Votes++;
+                    }
                     else
+                    {
                         currBattle.Votes2++;
+                        currBattle.Song2.Votes++;
+                    }
 
                 }
 
@@ -193,21 +225,7 @@ namespace FNSC.Data
 
             return true;
         }
-        public static Game Init(string theme, int noOfSongs)
-        {
-            Game newGame = new Game();
-            newGame.Rounds.Clear();
-            newGame.NoOfRounds = GameHelper.CalculateNoOfRounds(noOfSongs);
-            newGame.NoOfSongs = noOfSongs;
-            for (int i = 0; i < newGame.NoOfRounds; i++)
-                newGame.Rounds.Add(new Round(i+1));
-            newGame.SubmittedSongs = new BindingList<Song>();
-            newGame.PreSubmittedSongs = new List<Song>();
-            newGame.InitTimestamp = DateTime.Now;
-            
-            return newGame;
-        }
-
+        
         public void StartChampionship()
         {
            PrepareRound();
@@ -221,9 +239,10 @@ namespace FNSC.Data
                 round1.Battles = GameHelper.GroupSongsInRounds((CurrentRound != null ? CurrentRound.FinishedBattles.Select(b => b.Winner).ToList(): SubmittedSongs.ToList()));
                 foreach (Battle battle in round1.Battles)
                 {
-                    battle.Round = round1;
+                    battle.RoundNumber = round1.RoundNumber;
                     battle.Song1.won = battle.Song1.isOut = false;
                     battle.Song2.won = battle.Song2.isOut = false;
+                    battle.Song2.Votes = battle.Song2.Votes = 0;
                 }
                 round1.CurrentBattle = round1.Battles.FirstOrDefault(b => b.Position == 1);
                 CurrentRound = round1;
@@ -295,18 +314,19 @@ namespace FNSC.Data
         {
             if (CurrentRound != null)
             {
-                Song winner = CurrentRound.FinishedBattles.FirstOrDefault(b => b.Position == CurrentRound.CurrentBattleNo-1)
+                Winner = CurrentRound.FinishedBattles.FirstOrDefault(b => b.Position == CurrentRound.CurrentBattleNo-1)
                     ?.Winner;
-                if (winner != null)
+                if (Winner != null)
                 {
                     string path = Properties.Settings.Default.WebserverPath;
                     string tmpl = File.ReadAllText(Path.Combine(path, "player.tmpl"));
-                    string winnerHtml = tmpl.Replace("<CODE>",winner.Code)
-                        .Replace("<START>", winner.InitialStarttime.ToString());
+                    string winnerHtml = tmpl.Replace("<CODE>",Winner.Code)
+                        .Replace("<START>", Winner.InitialStarttime.ToString());
                     File.WriteAllText(Path.Combine(path, "winner.html"), winnerHtml);
                     GameFinished = true;
                     FinishTimestamp = DateTime.Now;
-                    OnWinnerFound(new EventArgs());
+                    DCExport();
+                    OnWinnerFound(Winner);
                 }
             }
         }
@@ -323,7 +343,14 @@ namespace FNSC.Data
             newGame.NoOfSongsPerPerson = songsPerPerson;
             newGame.Theme = theme;
             for (int i = 0; i < newGame.NoOfRounds; i++)
-                newGame.Rounds.Add(new Round(i + 1));
+            {
+                Round r = new Round(i + 1);
+                r.WinnerFound += (sender, song) =>
+                {
+                    newGame.OnRoundWinnerFound(song);
+                };
+                newGame.Rounds.Add(r);
+            }
             newGame.SubmittedSongs = new BindingList<Song>();
             newGame.PreSubmittedSongs = new List<Song>();
             newGame.InitTimestamp = DateTime.Now;
@@ -345,6 +372,61 @@ namespace FNSC.Data
                 newGame.MaxSongLength = new TimeSpan(0, min, sec);
             }
             return newGame;
+        }
+
+        public string Export()
+        {
+            string export = "{";
+            export += "\"NoOfSongs\":\"" + NoOfSongs + "\",";
+            export += "\"NoOfSongsPerPerson\":\"" + NoOfSongsPerPerson + "\",";
+            export += "\"Start\":\"" + InitTimestamp.ToString("dd.MM.yyyy HH:mm") + "\",";
+            export += "\"End\":\"" + FinishTimestamp.ToString("dd.MM.yyyy HH:mm") + "\",";
+            export += "\"Theme\":\"" + Theme + "\",";
+            export += "\"Winner\":" + Winner?.Export() + ",";
+            export += "\"Rounds\":{";
+            foreach (Round round in Rounds)
+                export += round.Export();
+            export += "},";
+            export += "\"Songs\":{";
+            foreach (Song song in SubmittedSongs)
+                export += song.Export() + ",";
+            export = export.TrimEnd(',');
+            export += "}";
+            export += "}";
+            return export;
+        }
+
+        [NotMapped]
+        public string ExportResult { get; set; }
+        public void DCExport()
+        {
+            try
+            {
+                string export = this.DiscordExport();
+                File.WriteAllText(FullPath, export);
+               
+                Discord.SendFile(this.ExportResult, this.FileName, this.FullPath, Properties.Settings.Default.WebhookUrl);
+                
+            }
+            catch (Exception e)
+            {
+                    MessageBox.Show("Error posting to Discord! Make sure you have configured the Webhook URL!\n\n" + e.Message, "ERROR", MessageBoxButtons.OK);
+            }
+        }
+        public string DiscordExport()
+        {
+            string export = "**Theme Championship " + ChampionshipNumber + ":**\n";
+            export += "*" + Theme + "*\n\r";
+            export += "**Winner:**" + "\n";
+            export += Winner?.DiscordExport() + "\n\r";
+            export += "Submitted songs:\n";
+            ExportResult = export;
+            foreach (Song song in SubmittedSongs)
+                export += song.DiscordExport() + "\n\r";
+            export += "Entire championship result:\n";
+           export += JsonConvert.SerializeObject(this, Formatting.Indented);
+            
+            return export;
         }
     }
 }

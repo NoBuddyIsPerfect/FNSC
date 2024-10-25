@@ -169,7 +169,7 @@ namespace FNSC.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Battles_RoundId",
                 table: "Battles",
-                column: "RoundId");
+                column: "RoundNumber");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Battles_RoundId1",
@@ -225,7 +225,7 @@ namespace FNSC.Migrations
             migrationBuilder.AddForeignKey(
                 name: "FK_Battles_Rounds_RoundId",
                 table: "Battles",
-                column: "RoundId",
+                column: "RoundNumber",
                 principalTable: "Rounds",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
